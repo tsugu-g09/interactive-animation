@@ -1,10 +1,12 @@
 body{
   margin:0;
   background:black;
-  min-height:100vh;
+  overflow:hidden;
+
+  width:100vw;
+  height:100vh;
 
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
 }
@@ -12,28 +14,32 @@ body{
 .video-container{
   position:relative;
 
-  /* PCではほどほど、スマホでは画面内 */
-  width:min(90vw, 600px);
+  /* 画面に収まる最大サイズ */
+  width:min(100vw, calc(100vh * 0.75));
+  height:min(100vh, calc(100vw * 1.3333));
 }
 
 video{
-  width:100%;
-  height:auto;
-  max-height:80vh;
+  position:absolute;
+  inset:0;
 
-  display:block;
+  width:100%;
+  height:100%;
+
   object-fit:contain;
+  display:block;
 }
 
 #finishPlayer{
-  position:absolute;
-  inset:0;
   opacity:0;
   pointer-events:none;
 }
 
 button{
-  margin-top:20px;
+  position:fixed;
+  bottom:24px;
+  right:24px;
+
   padding:12px 24px;
   font-size:20px;
 }
