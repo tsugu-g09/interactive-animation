@@ -53,12 +53,17 @@ loopPlayer.addEventListener("ended", async () => {
     await new Promise(resolve => setTimeout(resolve, 50));
   }
 
-  // 切り替え
+finishPlayer.currentTime = 0;
+
+// 先に再生開始
+await finishPlayer.play();
+
+// 1フレーム待つ（描画を待機）
+requestAnimationFrame(() => {
+  // このタイミングで切替
   loopPlayer.style.opacity = "0";
   finishPlayer.style.opacity = "1";
-
-  finishPlayer.currentTime = 0;
-  finishPlayer.play();
+});
 });
 
 // Finishボタン
